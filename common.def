@@ -1,0 +1,2 @@
+# Target OS, LINUX or WINDOWS. NOTE, no trailing whitespace!!
+TARGETOS = LINUX
