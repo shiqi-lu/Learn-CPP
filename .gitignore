@@ -1,4 +1,4 @@
-ompiled Object files
+# Compiled Object files
 *.slo
 *.lo
 *.o
@@ -26,3 +26,8 @@ ompiled Object files
 *.exe
 *.out
 *.app
+
+# Ignore Directory
+include
+lib
+depends/boost_1_45_0
