@@ -1,2 +1,14 @@
 # Target OS, LINUX or WINDOWS. NOTE, no trailing whitespace!!
 TARGETOS = LINUX
+
+# Commands
+CXX := g++
+CC := gcc
+MAKE := make
+
+# Sub directories
+INC_DIR=$(CPPET)/include
+CPP_DIR=$(CPPET)/cpp
+OBJ_DIR=$(CPPET)/obj
+LIB_DIR=$(CPPET)/lib
+BIN_DIR=$(CPPET)/bin
