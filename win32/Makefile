@@ -1,5 +1,5 @@
 SRCS := $(wildcard *.cpp)
-OBJS := $(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
+#OBJS := $(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
 
 BINS = LongFileNameTest
 
@@ -12,7 +12,7 @@ LongFileNameTest: LongFileNameTest.cpp
 
 strip:
 	@for i in $(BINS);\
-		do strip -s $$i*;\
+		do strip -s $$i.exe;\
 	done
 
 clean:
