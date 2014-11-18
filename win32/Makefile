@@ -17,6 +17,6 @@ strip:
 
 clean:
 	@for i in $(BINS);\
-		do rm -f $$i*;\
+		do rm -f $$i.exe;\
 	done
 
