@@ -28,6 +28,5 @@
 *.app
 
 # Ignore Directory
-include
-lib
 depends/boost_1_45_0
+include/boost
