@@ -16,7 +16,7 @@ all: $(PKGDIR)
 	cd $(PKGDIR) && ./bootstrap.sh $(TOOLSET) \
 		--prefix=../../ --libdir=../../lib \
 		--includedir=../../include/ \
-		--with-libraries=thread,test,regex,program_options,filesystem,system,date_time
+		--with-libraries=all
 	sed -i -e 's/mingw/gcc/' $(PKGDIR)/project-config.jam
 	cd $(PKGDIR) && ./bjam $(BCXXFLAGS) $(BJAMOPTS)
 	cd $(PKGDIR) && ./bjam $(BCXXFLAGS) $(BJAMOPTS) install
