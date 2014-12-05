@@ -213,6 +213,7 @@ void split()
     // token_compress_off
     split(l, str, is_any_of(".:-"), token_compress_on);
     BOOST_FOREACH(iterator_range<string::iterator> rge, l) {
+    //for (auto rge : l) {
         cout << "[" << rge << "]";
     }
     cout << endl;
