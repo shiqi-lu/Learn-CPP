@@ -30,7 +30,35 @@ void init_vector()
         }
         cout << *it << endl;
     }
-    
+/*
+output
+=========== init_vector: ===========
+1.Beijing City.
+2.Tianjin City.
+3.Shanghai City.
+4.Chongqing City.
+size is 4
+capacity is 4
+maxsize is 2305843009213693951
+resize: 10
+size is 10
+capacity is 10
+1.Beijing City.
+2.Tianjin City.
+3.Shanghai City.
+4.Chongqing City.
+*********
+
+*********
+
+*********
+
+*********
+
+*********
+
+*********
+*/
 }
 
 int main()
