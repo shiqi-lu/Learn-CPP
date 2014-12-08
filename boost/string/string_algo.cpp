@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <boost/algorithm/string.hpp>
+#include <boost/assign.hpp>
 #include <boost/foreach.hpp>
 #include <boost/format.hpp>
 using namespace std;
@@ -227,6 +228,60 @@ output:
 */
 }
 
+void join()
+{
+    cout << "========== join: ============" << endl;
+    using namespace boost::assign;
+    vector<string> v = list_of("Samus")("Link")("Zelda")("Mario");
+    cout << join(v, "+") << endl;
+
+    /*struct is_contains_a
+    {
+        bool operator()(const string & x) {
+            return contains(x, "a");
+        }
+    };
+    cout << join_if(v, "**", is_contains_a()) << endl;*/
+/*
+output:
+========== join: ============
+Samus+Link+Zelda+Mario
+*/
+}
+
+void iterator_find()
+{
+    cout << "============ iterator: =============" << endl;
+    // first_finder, last_finder, nth_finder, token_finder
+    string str("Samus||samus||mario||||Link");
+
+    typedef find_iterator<string::iterator> string_find_iterator;
+
+    // find iterator
+    string_find_iterator pos, end;
+    for (pos = make_find_iterator(str, first_finder("samus", is_iequal()));
+            pos != end; ++pos) {
+        cout << "[" << *pos << "]";
+    }
+    cout << endl;
+
+    // split iterator
+    typedef split_iterator<string::iterator> string_split_iterator;
+
+    string_split_iterator p, endp;
+    p = make_split_iterator(str, first_finder("||", is_iequal()));
+    for ( ; p != endp; ++p) {
+        cout << "[" << *p << "]";
+    }
+    cout << endl;
+/*
+output:
+============ iterator: =============
+[Samus][samus]
+[Samus][samus][mario][][Link]
+*/
+}
+
 int main()
 {
     upper_lower();
@@ -244,6 +299,10 @@ int main()
     replace_erase();
 
     split();
+
+    join();
+
+    iterator_find();
 
     return 0;
 }
