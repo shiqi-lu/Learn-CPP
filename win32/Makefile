@@ -1,7 +1,8 @@
 SRCS := $(wildcard *.cpp)
 #OBJS := $(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
 
-BINS = LongFileNameTest
+BINS = LongFileNameTest \
+       GetLogicalDrive
 
 .PHONY: all clean strip
 
@@ -9,6 +10,9 @@ all: $(BINS) strip
 
 LongFileNameTest: LongFileNameTest.cpp
 	$(CXX) -D_UNICODE -DUNICODE -static-libgcc -static-libstdc++ $< -o $@
+
+GetLogicalDrive: GetLogicalDrive.cpp
+	$(CXX) -static-libgcc -static-libstdc++ $< -o $@
 
 strip:
 	@for i in $(BINS);\
