@@ -29,3 +29,8 @@ minimal_test.cpp(20): fatal error, test terminated! in function: 'int test_main(
 
 **** 2 errors detected
 */
+/*
+ * BOOST_CHECK(predicate): 断言测试通过，如不通过不影响程序执行
+ * BOOST_REQUIRE(predicate): 要求测试必须通过，否则程序停止执行
+ * BOOST_ERROR(message): 给出一个错误信息，程序继续执行
+ * BOOST_FAIL(message): 给出一个错误信息，程序终止执行
