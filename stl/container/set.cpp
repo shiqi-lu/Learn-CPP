@@ -20,9 +20,20 @@ void OutPutM(std::multiset<int> &s)
     std::cout << std::endl;
 }
 
-void Print(int  Ele)
+void Print(int Ele)
 {
     std::cout << Ele << ", ";
+}
+
+void Printd(double Ele)
+{
+    std::cout << Ele << " ";
+}
+
+template <typename T> void printSet(std::set<T> & s)
+{
+    for_each(s.begin(), s.end(), Print);
+    std::cout << std::endl;
 }
 
 void init() 
@@ -167,11 +178,138 @@ The element with a key > 16 in s2 is: 18
 */
 }
 
+void set_iterator()
+{
+    std::cout << "================ set_iterator: ==============" << std::endl;
+    std::set<double> s1, s2;
+    s1.insert(11);
+    s1.insert(21);
+    s1.insert(17);
+    s1.insert(19);
+    s1.insert(9);
+    s1.insert(13);
+    std::cout << "s1: " << std::endl;
+    for_each(s1.begin(), s1.end(), Printd);
+    std::cout << std::endl;
+
+    s2 = s1;
+    std::cout << "s2: " << std::endl;
+    for_each(s2.begin(), s2.end(), Printd);
+    std::cout << std::endl;
+
+    s2.insert(31);
+    s2.insert(24);
+    std::cout << "s2: " << std::endl;
+    for_each(s2.begin(), s2.end(), Printd);
+    std::cout << std::endl;
+
+    s1.swap(s2);
+    std::cout << "s1: " << std::endl;
+    for_each(s1.begin(), s1.end(), Printd);
+    std::cout << std::endl;
+    std::cout << "s2: " << std::endl;
+    for_each(s2.begin(), s2.end(), Printd);
+    std::cout << std::endl;
+
+    std::set<double>::iterator its;
+    std::set<double>::reverse_iterator rits;
+    its = s1.begin();
+    std::cout << "The first Element of sequence \'s1\': " << *its << std::endl;
+    its = s1.end();
+    std::cout << "The last Element of sequence \'s1\': " << *(--its) << std::endl;
+    rits = s1.rbegin();
+    std::cout << "The first Element of sequence in reverse direction \'s1\': " << *rits << std::endl;
+    rits = s1.rend();
+    std::cout << "The last Element of sequence in reverse direction \'s1\': " << *(--rits) << std::endl;
+
+/*
+output:
+================ set_iterator: ==============
+s1: 
+9 11 13 17 19 21 
+s2: 
+9 11 13 17 19 21 
+s2: 
+9 11 13 17 19 21 24 31 
+s1: 
+9 11 13 17 19 21 24 31 
+s2: 
+9 11 13 17 19 21 
+The first Element of sequence 's1': 9
+The last Element of sequence 's1': 31
+The first Element of sequence in reverse direction 's1': 31
+The last Element of sequence in reverse direction 's1': 9
+*/
+}
+
+void set_insert_erase()
+{
+    std::cout << "============= set_insert_erase: ===========" << std::endl;
+    std::set<int> s1, s2;
+    std::pair<std::set<int>::iterator, bool> p1;
+    s1.insert(10);
+    s1.insert(11);
+    s1.insert(13);
+    s1.insert(21);
+    s1.insert(17);
+    
+    std::cout << "s1: " << std::endl;
+    printSet(s1);
+
+    p1 = s1.insert(12);
+    if (p1.second == true) {
+        std::cout << "The element 12 be inserted successfully." << std::endl;
+        std::cout << "The position of 17 is: " << distance(s1.begin(), p1.first) + 1 << std::endl;
+    } else {
+        std::cout << "The element 12 already exist in s1." << std::endl;
+        std::cout << "The position of 17 is: " << distance(s1.begin(), p1.first) + 1 << std::endl;
+    }
+    std::cout << "s1: " << std::endl;
+    printSet(s1);
+
+    s2 = s1;
+    s2.insert(25);
+    std::cout << "s2: " << std::endl;
+    printSet(s2);
+    s2.erase(25);
+    std::cout << "s2: (after erasing 25.)" << std::endl;
+    printSet(s2);
+    s2.erase(s2.begin());
+    std::cout << "s2: (after erasing *begin() " << std::endl;
+    printSet(s2);
+    s2.erase((++s2.begin()), (--s2.end()));
+    std::cout << "s2: (after erasing from ++begin() to --end()" << std::endl;
+    printSet(s2);
+
+/*
+output:
+============= set_insert_erase: ===========
+s1: 
+10, 11, 13, 17, 21, 
+The element 12 be inserted successfully.
+The position of 17 is: 3
+s1: 
+10, 11, 12, 13, 17, 21, 
+s2: 
+10, 11, 12, 13, 17, 21, 25, 
+s2: (after erasing 25.)
+10, 11, 12, 13, 17, 21, 
+s2: (after erasing *begin() 
+11, 12, 13, 17, 21, 
+s2: (after erasing from ++begin() to --end()
+11, 21, 
+*/
+}
+
 int main()
 {
     init();
 
     set_capacity();
+
+    set_iterator();
+
+    set_insert_erase();
 
     return 0;
 }
