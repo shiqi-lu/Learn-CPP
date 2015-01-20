@@ -28,9 +28,11 @@
 *.app
 
 # Ignore Directory
-depends/boost_1_45_0
-depends/boost_1_57_0
-include/boost
+depends/boost/boost_1_57_0
+depends/protobuf/protobuf-2.6.1
+include
+bin
+lib
 
 
 # vim
