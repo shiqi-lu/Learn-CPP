@@ -1,3 +1,4 @@
+// file_type.c -- test the file type
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
