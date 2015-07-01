@@ -41,7 +41,5 @@ int main()
         printf("the parent's pwd is : %s\n", buf);
     }
 
-
-
     return 0;
 }
