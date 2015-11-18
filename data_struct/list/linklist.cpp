@@ -1,30 +1,6 @@
-template <typename DataType>
-class LinkList
-{
-public:
-    LinkList()
-    {
-        head = new ListNode();
-    }
+#include <iostream>
 
-    LinkList(ListNode * node)
-    {
-        head = node;
-    }
-
-    ~LinkList()
-    {
-        delete head;
-    }
-    bool insertNode(ListNode * q, DataType newData);
-    bool removeNode(ListNode * q);
-    ListNode * findNode(DataType value);
-    bool cleanLink();
-    DataType getNodeData(ListNode * p);
-
-private:
-    ListNode * head;
-};
+template <typename DataType> class LinkList;
 
 template <typename DataType>
 class ListNode
@@ -53,9 +29,38 @@ public:
     }
 
 private:
-    friend typename LinkList<DataType>;
+    friend class LinkList<DataType>;
     DataType * next;
     DataType data;
+};
+
+template <typename DataType>
+class LinkList
+{
+public:
+    LinkList()
+    {
+        head = new ListNode<DataType>();
+    }
+
+    LinkList(ListNode<DataType> * node)
+    {
+        head = node;
+    }
+
+    ~LinkList()
+    {
+        delete head;
+    }
+    bool insertNode(int i, DataType newData);
+    bool insertNode(DataType newData);
+    bool removeNode(ListNode<DataType> * q);
+    ListNode<DataType> * findNode(DataType value);
+    void cleanLink();
+    DataType getNodeData(ListNode<DataType> * p);
+
+private:
+    ListNode<DataType> * head;
 };
 
 template <typename DataType>
@@ -122,7 +127,7 @@ ListNode<DataType> * LinkList<DataType>::findNode(DataType value)
     }
     if (currentPointer == NULL) {
         std::cout << "No such node" << std::endl;
-        exit(1);
+        return NULL;
     } else {
         return currentPointer;
     }
@@ -137,4 +142,11 @@ void LinkList<DataType>::cleanLink()
         head->next = current->next;
         delete current;
     }
+}
+
+int main()
+{
+
+
+    return 0;
 }
