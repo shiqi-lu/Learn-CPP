@@ -22,6 +22,19 @@ void insertionSort(T a[], int n)
     }
 }
 
+template <typename T>
+void insertionSort1(T a[], int n)
+{
+    for (int i = 1; i < n; ++i) {
+        T t = a[i];
+        int j;
+        for (j = i-1; j >= 0 && t < a[j]; --j) {
+            a[j+1] = a[j];
+        }
+        a[j+1] = t;
+    }
+}
+
 int main()
 {
     int a[10] = {3, 2, 4, 1, 6, 9, 8, 7, 5, 0};
@@ -29,7 +42,7 @@ int main()
     std::copy(a, a+10, std::ostream_iterator<int>(std::cout, " "));
     std::cout << std::endl;
 
-    insertionSort(a, 10);
+    insertionSort1(a, 10);
 
     std::cout << "After the sort, a[0:9] = ";
     std::copy(a, a+10, std::ostream_iterator<int>(std::cout, " "));
