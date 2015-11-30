@@ -6,7 +6,7 @@ void towersOfHanoi(int n, int x, int y, int z)
         towersOfHanoi(n - 1, x, z, y);
         std::cout << "Move top disk from tower " << x
                   << " to top of tower " << y << std::endl;
-        towersOfHanoi(n-1, z, y, x);
+        towersOfHanoi(n - 1, z, y, x);
     }
 }
 
